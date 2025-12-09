@@ -2,64 +2,83 @@
 <html lang="en">
 
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Home — Dealerships</title>
-  <link rel="stylesheet" href="/static/bootstrap.min.css">
-  <link rel="stylesheet" href="/static/style.css">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Home — Dealerships</title>
+    <link rel="stylesheet" href="/static/bootstrap.min.css">
+    <link rel="stylesheet" href="/static/style.css">
 </head>
 
 <body onload="checkSession()">
-  <header class="site-header">
-    <div class="container-xl" style="display:flex; align-items:center; justify-content:space-between">
-      <div class="site-brand">Dealerships</div>
-      <nav class="nav-links">
-        <a href="/">Home</a>
-        <a href="/about">About</a>
-        <a href="/contact">Contact</a>
-      </nav>
-      <div id="loginlogout" class="loginlink"></div>
-    </div>
-  </header>
-
-  <main class="container-xl">
-    <section class="hero" style="padding-top:36px;">
-      <div class="hero-card" style="display:flex; align-items:center; gap:20px;">
-        <div style="flex:1">
-          <h1 style="font-size:24px; margin:0">Welcome to our Dealerships!</h1>
-          <p class="lead" style="margin-top:8px">Find quality used and new vehicles with transparent pricing and a
-            simple buying
-            experience.</p>
-          <a class="cta" href="/dealers" style="margin-top:12px; display:inline-block">View Dealerships</a>
+    <header class="site-header">
+        <div class="container-xl" style="display:flex; align-items:center; justify-content:space-between">
+            <div class="site-brand">Dealerships</div>
+            <nav class="nav-links">
+                <a href="/">Home</a>
+                <a href="/about">About</a>
+                <a href="/contact">Contact</a>
+            </nav>
+            <div id="loginlogout" class="loginlink"></div>
         </div>
-        <div class="hero-visual">
-          <img src="/static/car_dealership.jpg" alt="Dealership" class="hero-image">
-        </div>
-      </div>
-    </section>
-  </main>
+    </header>
 
-  <script>
-    const logout = async (e) => {
-      // TODO: implement logout logic
-      sessionStorage.removeItem('username');
-      location.reload();
-    };
+    <main class="container-xl">
+        <section class="hero" style="padding-top:36px;">
+            <div class="hero-card" style="display:flex; align-items:center; gap:20px;">
+                <div style="flex:1">
+                    <h1 style="font-size:24px; margin:0">Welcome to our Dealerships!</h1>
+                    <p class="lead" style="margin-top:8px">Find quality used and new vehicles with transparent pricing
+                        and a
+                        simple buying
+                        experience.</p>
+                    <a class="cta" href="/dealers" style="margin-top:12px; display:inline-block">View Dealerships</a>
+                </div>
+                <div class="hero-visual">
+                    <img src="/static/car_dealership.jpg" alt="Dealership" class="hero-image">
+                </div>
+            </div>
+        </section>
+    </main>
 
-    let checkSession = () => {
-      let curr_user = sessionStorage.getItem("username");
+    <script>
+        const logout = async (e) => {
+            // Build logout URL and Make GET request to logout endpoint
+            let logout_url = window.location.origin + "/djangoapp/logout";
+            const res = await fetch(logout_url, {
+                method: "GET",
+            });
 
-      if (curr_user && curr_user !== "") {
-        document.getElementById("loginlogout").innerHTML =
-          '<span class="homepage_links">' + curr_user + '</span>' +
-          '<a class="homepage_links" onclick="logout()" href="/">Logout</a>';
-      } else {
-        document.getElementById("loginlogout").innerHTML =
-          '<a class="homepage_links" href="/login">Login</a>' +
-          '<a class="homepage_links"  href="/register">Register</a>';
-      }
-    }
-  </script>
+            const json = await res.json();
+            if (json) {
+                // Clear session storage and reload page
+                let username = sessionStorage.getItem('username');
+                sessionStorage.removeItem('username');
+                window.location.href = window.location.origin;
+                window.location.reload();
+                // Notify user of logout
+                alert("Logging out " + username + "...");
+            }
+            else {
+                alert("The user could not be logged out.");
+            }
+            sessionStorage.removeItem('username');
+            location.reload();
+        };
+
+        let checkSession = () => {
+            let curr_user = sessionStorage.getItem("username");
+
+            if (curr_user && curr_user !== "") {
+                document.getElementById("loginlogout").innerHTML =
+                    '<span class="homepage_links">' + curr_user + '</span>' +
+                    '<a class="homepage_links" onclick="logout()" href="/">Logout</a>';
+            } else {
+                document.getElementById("loginlogout").innerHTML =
+                    '<a class="homepage_links" href="/login">Login</a>' +
+                    '<a class="homepage_links"  href="/register">Register</a>';
+            }
+        }
+    </script>
 
 </body>
 
