@@ -1,68 +1,88 @@
-<html>
+<!doctype html>
+<html lang="en">
+
 <head>
-  <!-- Link the style sheet here -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>About — Dealerships</title>
+  <link rel="stylesheet" href="/static/bootstrap.min.css">
+  <link rel="stylesheet" href="/static/style.css">
 </head>
-<div>
-  <nav class="navbar navbar-expand-lg navbar-light" style="background-color:darkturquoise; height: 1in;">
-    <div class="container-fluid">
-      <h2 style="padding-right: 5%;">Dealerships</h2>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarText">
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="nav-item">
-            <a class="nav-link" style="font-size: larger;" aria-current="page" href="/">Home</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link active" style="font-size: larger;" href="/about">About Us</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" style="font-size: larger;" href="/contact">Contact Us</a>
-          </li>
-        </ul>
-      </div>
+
+<body>
+  <header class="site-header">
+    <div class="container-xl" style="display:flex; align-items:center; justify-content:space-between">
+      <div class="site-brand">Dealerships</div>
+      <nav class="nav-links">
+        <a href="/">Home</a>
+        <a href="/about" style="color:var(--md-sys-color-primary)">About</a>
+        <a href="/contact">Contact</a>
+      </nav>
     </div>
-  </nav>
-  
-    <div class="card" style="width: 80%;margin: auto; margin-top:5%;">
-      <div class="banner" name="about-header">
-      <!-- Insert header information here -->
-      </div>
-      <div style="display: flex;flex-direction: row; margin:auto">
-      <div class="card" style="width: 30%;">
-        <img class="card-img-top" src="/static/person.png" alt="Card image">
-        <div class="card-body">
-          <p class="title">Person1</p>
-          <p>Person1 Title</p>
-          <p class="card-text">Some text that explains the person1 in about 2 short sentences</p>
-          <p>person1@example.com</p>
-        </div>
+  </header>
+
+  <main class="container-xl">
+    <section class="hero">
+      <div class="hero-card">
+        <h1>We match great cars with great people</h1>
+        <p class="lead">At Best Cars dealership we specialize in domestic and imported vehicles, curated for quality,
+          value,
+          and long-term satisfaction. Browse our inventory, read real reviews, and talk to an expert today.</p>
+        <a class="cta" href="/contact">Get in touch</a>
       </div>
 
-      <div class="card" style="width: 30%;">
-        <img class="card-img-top" src="/static/person.png" alt="Card image">
-        <div class="card-body">
-          <p class="title">Person2</p>
-          <p>Person2 Title</p>
-          <p class="card-text">Some text that explains the person2 in about 2 short sentences</p>
-          <p>person2@example.com</p>
-        </div>
+      <div class="hero-visual">
+        <div class="visual-card">Featured Inventory</div>
       </div>
+    </section>
 
-      <div class="card" style="width: 30%;">
-        <img class="card-img-top" src="/static/person.png" alt="Card image">
-        <div class="card-body">
-          <p class="title">Person3</p>
-          <p>Person3 Title</p>
-          <p class="card-text">Some text that explains the person3 in about 2 short sentences</p>
-          <p>person3@example.com</p>
+    <section class="values" aria-label="Our values">
+      <div class="value">
+        <h3>Transparent Pricing</h3>
+        <p>Clear, fair pricing — no surprises. We publish comparable pricing and history for each car.</p>
+      </div>
+      <div class="value">
+        <h3>Quality Checked</h3>
+        <p>Every vehicle goes through a multi-point inspection and comes with a detailed report.</p>
+      </div>
+      <div class="value">
+        <h3>Service & Support</h3>
+        <p>Post-sale support and service plans to keep you on the road with confidence.</p>
+      </div>
+    </section>
+
+    <section class="team">
+      <h2 style="color:#102a43; margin-bottom:16px">Meet the team</h2>
+      <div class="team-grid">
+        <div class="team-card">
+          <img src="/static/person.png" alt="Person 1">
+          <h4>Person 1</h4>
+          <p class="role">General Manager</p>
+          <p class="email">person1@example.com</p>
+        </div>
+
+        <div class="team-card">
+          <img src="/static/person.png" alt="Person 2">
+          <h4>Person 2</h4>
+          <p class="role">Sales Lead</p>
+          <p class="email">person2@example.com</p>
+        </div>
+
+        <div class="team-card">
+          <img src="/static/person.png" alt="Person 3">
+          <h4>Person 3</h4>
+          <p class="role">Customer Success</p>
+          <p class="email">person3@example.com</p>
         </div>
       </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container-xl">
+      <p style="margin:0">© <strong>Best Cars</strong> — Built with care. | <a href="/contact">Contact us</a></p>
     </div>
-    </div>
-    </div>
-    
-</div>
+  </footer>
+</body>
 
 </html>

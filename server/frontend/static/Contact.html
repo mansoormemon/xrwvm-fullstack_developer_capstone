@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Contact — Dealerships</title>
+    <link rel="stylesheet" href="/static/bootstrap.min.css">
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+
+<body>
+    <header class="site-header">
+        <div class="container-xl" style="display:flex; align-items:center; justify-content:space-between">
+            <div class="site-brand">Dealerships</div>
+            <nav class="nav-links">
+                <a href="/">Home</a>
+                <a href="/about">About</a>
+                <a href="/contact" style="color:var(--md-sys-color-primary)">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container-xl">
+        <section class="contact-hero">
+            <div style="flex:1">
+                <h1>Contact Us</h1>
+                <p>Questions about inventory, financing, or service? Send us a message and we'll respond promptly.</p>
+            </div>
+            <div style="width:280px; text-align:right">
+                <a class="btn-primary" href="/">Back to inventory</a>
+            </div>
+        </section>
+
+        <section class="contact-card">
+            <div class="contact-grid">
+                <form action="/contact" method="post" style="background:transparent">
+                    <div style="display:flex; flex-direction:column; gap:12px">
+                        <div class="form-row">
+                            <input class="form-control" type="text" name="name" placeholder="Full name" required>
+                            <input class="form-control" type="email" name="email" placeholder="Email" required>
+                        </div>
+                        <input class="form-control" type="text" name="subject" placeholder="Subject">
+                        <textarea class="form-control" name="message" rows="6" placeholder="How can we help?"
+                            required></textarea>
+                        <div style="display:flex; justify-content:flex-end">
+                            <button type="submit" class="btn-primary">Send message</button>
+                        </div>
+                    </div>
+                </form>
+
+                <aside class="aside-card">
+                    <h3 style="margin-top:0">Get in touch</h3>
+                    <ul class="contact-list">
+                        <li><strong>Phone:</strong> (555) 123-4567</li>
+                        <li><strong>Email:</strong> info@bestcars.example</li>
+                        <li><strong>Address:</strong> 123 Auto Lane, Motor City</li>
+                    </ul>
+
+                    <h4 style="margin-top:18px">Visit us</h4>
+                    <div class="map-placeholder">Map placeholder</div>
+                </aside>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer" style="text-align:center; padding:28px; color:#42566a">
+        <div class="container-xl">
+            <p style="margin:0">© <strong>Best Cars</strong> — Built with care. | <a href="/about">About us</a></p>
+        </div>
+    </footer>
+</body>
+
+</html>
